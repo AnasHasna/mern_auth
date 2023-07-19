@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import connectToDb from "./config/connectToDb.js";
 import userRoutes from "./routes/userRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ const port = process.env.PORT || 5000;
 connectToDb();
 const app = express();
 
+app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
