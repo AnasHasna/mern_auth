@@ -5,6 +5,7 @@ import connectToDb from "./config/connectToDb.js";
 import userRoutes from "./routes/userRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import cors from "cors";
+import helmet from "helmet";
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ const port = process.env.PORT || 5000;
 connectToDb();
 const app = express();
 
+app.use(helmet());
 app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
