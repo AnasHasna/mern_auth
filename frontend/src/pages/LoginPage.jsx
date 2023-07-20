@@ -3,9 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
-import { removeCredentials, setCredentials } from "../redux/slices/authSlice";
+import { setCredentials } from "../redux/slices/authSlice";
 import { useLoginMutation } from "../redux/slices/usersApiSlice";
 import { toast } from "react-toastify";
+import Loader from "../components/Loader";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -55,6 +56,7 @@ function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}></Form.Control>
         </Form.Group>
+        {isLoading && <Loader />}
         <Button type="submit" variant="primary" className="my-2">
           Sign In
         </Button>
