@@ -35,6 +35,7 @@ const ProfilePage = () => {
       }).unwrap();
       dispatch(setCredentials({ ...res }));
       toast.success("Profile Updated Successfully");
+      console.log("Profile Updated Successfully");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
